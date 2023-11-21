@@ -36,7 +36,7 @@ int registro()// função responsável por cadastrar os usuários no sistema
 	fprintf(file, nome);
 	fclose(file);//fecha e salva
 		
-	file= fopen(arquivo, "a"); //atualiza informações
+	file= fopen(arquivo, "a"); //atualiza informações 
 	fprintf(file, " "); 
 	fclose(file);//fecha e salva
 	
@@ -47,14 +47,14 @@ int registro()// função responsável por cadastrar os usuários no sistema
 	fprintf(file, sobrenome);
 	fclose(file);//fecha e salva
 		
-	file= fopen(arquivo, "a"); //abre arquivo para atualizar
+	file= fopen(arquivo, "a"); //abre arquivo para atualizar 
 	fprintf(file, "\n");
 	fclose(file);//fecha e salva
 
 	printf("Digite o cargo a ser cadastrado: ");//coletando infos do usuario
 	scanf("%s", cargo);//%s refere-se a string, salva na variável cargo
 	
-	file= fopen(arquivo,"a");//abre arquivo para atualizar
+	file= fopen(arquivo,"a");//abre arquivo para atualizar 
 	fprintf(file,"CARGO: ");
 	fprintf(file, cargo);
 	fprintf(file,"\n\n");
@@ -148,52 +148,66 @@ int main() //funcao princiapal
 {
 	int opcao=0; //alocamento de espaço para armazenar a escolha do usuario//Definindo variáveis
 	int laco=1; //definindo a variável de repetição
+	char senhadigitada[]="a";
+	int comparacao;
 	
-	for(laco=1; laco=1;)
-	{
+	printf("### Cartório da EBAC ### \n\nLogin de administrador!\n\nDigite a sua senha:");
+	scanf("%s",senhadigitada);
 	
-		system("cls");
-		
-		setlocale(LC_ALL, "Portuguese"); //definindo a linguagem
+	comparacao = strcmp(senhadigitada,"admin");//pegamos na biblioteca de string a função de comparação
 	
-		printf("### Cartório da EBAC ### \n\n"); //início do menu
-		printf("Escolha a opção desejada do menu: \n\n");
-		printf("\t1- Registrar nomes\n");
-		printf("\t2- Consultar nomes\n");
-		printf("\t3- Deletar nomes\n");
-		printf("\t4- Sair do sistema\n\n");
-		printf("Opção: "); //fim do menu
-	
-		scanf("%d", &opcao); //scanf é responsável por escanear a resposta do usuário e %d por armazenar a variável inteira em opção
-	
-		system("cls"); //apaga a tela após o usuário fazer a sua escolha, o que deixa o layout mais amigável para o usuário
-		
-			
-		switch(opcao)
+	if(comparacao == 0)	
+	{	
+		for(laco=1; laco=1;)
 		{
-			case 1:
-			registro();//chamada de funções
-			break;
+	
+			system("cls");
+		
+			setlocale(LC_ALL, "Portuguese"); //definindo a linguagem
+	
+			printf("### Cartório da EBAC ### \n\n"); //início do menu
+			printf("Escolha a opção desejada do menu: \n\n");
+			printf("\t1- Registrar nomes\n");
+			printf("\t2- Consultar nomes\n");
+			printf("\t3- Deletar nomes\n");
+			printf("\t4- Sair do sistema\n\n");
+			printf("Opção: "); //fim do menu
+	
+			scanf("%d", &opcao); //scanf é responsável por escanear a resposta do usuário e %d por armazenar a variável inteira em opção
+	
+			system("cls"); //apaga a tela após o usuário fazer a sua escolha, o que deixa o layout mais amigável para o usuário
+		
 			
-			case 2:
-			consulta();//chamada de funções
-			break;
+			switch(opcao)
+			{
+				case 1:
+				registro();//chamada de funções
+				break;
 			
-			case 3:
-			deletar();//chamada de funções
-			break;
+				case 2:
+				consulta();//chamada de funções
+				break;
 			
-			case 4:
-			printf("Obrigada por utilizar o sistema!\n\n");
-			return 0;//retorna ao valor 0, quebra laço, função, tudo! Ou seja, sai do sistema.
-			break;
+				case 3:
+				deletar();//chamada de funções
+				break;
 			
-			default: //o default funciona como se fosse um else
-			printf("Essa opção não está disponível!\n\n");
-			system("pause");
-			break;	
+				case 4:
+				printf("Obrigada por utilizar o sistema!\n\n");
+				return 0;//retorna ao valor 0, quebra laço, função, tudo! Ou seja, sai do sistema.
+				break;
+			
+				default: //o default funciona como se fosse um else
+				printf("Essa opção não está disponível!\n\n");
+				system("pause");
+				break;	
+			}
 		}
 	
     }
-
+	
+	else
+	printf ("\nSenha incorreta!\n\n");
 }
+
+
